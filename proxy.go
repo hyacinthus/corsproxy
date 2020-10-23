@@ -198,6 +198,7 @@ func (p *CORSProxy) modifyResponse(rw http.ResponseWriter, res *http.Response, r
 func (p *CORSProxy) director(rw http.ResponseWriter, req *http.Request) bool {
 	// TODO: auth
 	realURL := req.Header.Get(p.Config.RealURLHeader)
+	p.logf(realURL)
 	target, err := url.Parse(realURL)
 	if err != nil {
 		p.getErrorHandler()(rw, req, fmt.Errorf("bad real url: %s ;%w", realURL, err))
