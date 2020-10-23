@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="668da3a5-31b8-4eed-b011-8b4f61db4021" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Dockerfile" />
     <MESSAGE value="Dockerfile master to main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dockerfile master to main" />
+    <MESSAGE value="add log" />
+    <option name="LAST_COMMIT_MESSAGE" value="add log" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
