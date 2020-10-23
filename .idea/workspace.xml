@@ -20,13 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="668da3a5-31b8-4eed-b011-8b4f61db4021" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/server/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proxy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/docker.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="/usr/local/Cellar/go/1.15.3/libexec" />
+  <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -73,6 +71,9 @@
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hyaci\project\corsproxy" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cmd/server" />
     </key>
@@ -101,6 +102,10 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="646" y="294" key="#Go_Modules/0.0.1707.920@0.0.1707.920" timestamp="1603379320776" />
+    <state x="632" y="167" key="#HTTP_Proxy" timestamp="1603465084007">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="632" y="167" key="#HTTP_Proxy/0.0.1707.920@0.0.1707.920" timestamp="1603465084007" />
     <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603446024307">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -109,10 +114,10 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="634" y="215" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1603379387606" />
-    <state x="312" y="102" key="SettingsEditor" timestamp="1603413361386">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="370" y="104" key="SettingsEditor" timestamp="1603465208527">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="312" y="102" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1603413361386" />
-    <state x="370" y="104" key="SettingsEditor/0.0.1707.920@0.0.1707.920" timestamp="1603379481766" />
+    <state x="370" y="104" key="SettingsEditor/0.0.1707.920@0.0.1707.920" timestamp="1603465208526" />
   </component>
 </project>
