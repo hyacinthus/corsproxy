@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="668da3a5-31b8-4eed-b011-8b4f61db4021" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +75,69 @@
       <recent name="$PROJECT_DIR$/cmd/server" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="corsproxy" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/cmd/server" />
+      <package value="github.com/hyacinthus/corsproxy/cmd/server" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="debug" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="corsproxy" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/cmd/server" />
+      <package value="github.com/hyacinthus/corsproxy" />
+      <directory value="$PROJECT_DIR$/cmd/server" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="corsproxy" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/hyacinthus/corsproxy" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -95,7 +158,8 @@
     <MESSAGE value="Dockerfile" />
     <MESSAGE value="Dockerfile master to main" />
     <MESSAGE value="add log" />
-    <option name="LAST_COMMIT_MESSAGE" value="add log" />
+    <MESSAGE value="move cors to caddy" />
+    <option name="LAST_COMMIT_MESSAGE" value="move cors to caddy" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -109,6 +173,10 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="632" y="167" key="#HTTP_Proxy/0.0.1707.920@0.0.1707.920" timestamp="1603465084007" />
+    <state x="309" y="115" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603504815292">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="309" y="115" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1707.920@0.0.1707.920" timestamp="1603504815292" />
     <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603446024307">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -117,10 +185,53 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="634" y="215" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1603379387606" />
+    <state width="1661" height="290" key="GridCell.Tab.0.bottom" timestamp="1603504906504">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1603504906504" />
+    <state width="1661" height="290" key="GridCell.Tab.0.center" timestamp="1603504906504">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1603504906504" />
+    <state width="1661" height="290" key="GridCell.Tab.0.left" timestamp="1603504906503">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1603504906503" />
+    <state width="1661" height="290" key="GridCell.Tab.0.right" timestamp="1603504906504">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1603504906504" />
+    <state width="1661" height="290" key="GridCell.Tab.1.bottom" timestamp="1603504913516">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.1.bottom/0.0.1707.920@0.0.1707.920" timestamp="1603504913516" />
+    <state width="1661" height="290" key="GridCell.Tab.1.center" timestamp="1603504913516">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.1.center/0.0.1707.920@0.0.1707.920" timestamp="1603504913516" />
+    <state width="1661" height="290" key="GridCell.Tab.1.left" timestamp="1603504913515">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.1.left/0.0.1707.920@0.0.1707.920" timestamp="1603504913515" />
+    <state width="1661" height="290" key="GridCell.Tab.1.right" timestamp="1603504913516">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1661" height="290" key="GridCell.Tab.1.right/0.0.1707.920@0.0.1707.920" timestamp="1603504913516" />
     <state x="370" y="104" key="SettingsEditor" timestamp="1603465208527">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="312" y="102" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1603413361386" />
     <state x="370" y="104" key="SettingsEditor/0.0.1707.920@0.0.1707.920" timestamp="1603465208526" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/proxy.go</url>
+          <line>302</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

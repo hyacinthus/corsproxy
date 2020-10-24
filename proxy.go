@@ -204,6 +204,7 @@ func (p *CORSProxy) director(rw http.ResponseWriter, req *http.Request) bool {
 		p.getErrorHandler()(rw, req, fmt.Errorf("bad real url: %s ;%w", realURL, err))
 		return false
 	}
+	req.Host = target.Host
 	targetQuery := target.RawQuery
 	req.URL.Scheme = target.Scheme
 	req.URL.Host = target.Host
