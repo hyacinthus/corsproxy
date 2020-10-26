@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net"
 	"net/http"
 	"net/textproto"
 	"net/url"
@@ -18,7 +17,8 @@ import (
 )
 
 type Config struct {
-	Port             int    `default:"8080"`
+	Port             int `default:"8080"`
+	RealIP           string
 	RealURLHeader    string `default:"X-Real-URL"`
 	NeedTokenAuth    bool
 	ProxyTokenHeader string `default:"X-Proxy-Token"`
@@ -216,14 +216,26 @@ func (p *CORSProxy) director(rw http.ResponseWriter, req *http.Request) bool {
 	} else {
 		req.URL.RawQuery = targetQuery + "&" + req.URL.RawQuery
 	}
-	if _, ok := req.Header["User-Agent"]; !ok {
-		// explicitly disable User-Agent so it's not set to default value
-		req.Header.Set("User-Agent", "")
+	if _, ok := req.Header["User-Agent"]; ok {
+		req.Header.Del("User-Agent")
 	}
 	// delete origin
-	if _, ok := req.Header["Origin"]; !ok {
+	if _, ok := req.Header["Origin"]; ok {
 		req.Header.Del("Origin")
 	}
+	if _, ok := req.Header["Referer"]; ok {
+		req.Header.Del("Referer")
+	}
+	if _, ok := req.Header["X-Forwarded-For"]; ok {
+		req.Header.Del("X-Forwarded-For")
+	}
+	if _, ok := req.Header["X-Forwarded-Port"]; ok {
+		req.Header.Del("X-Forwarded-Port")
+	}
+	if _, ok := req.Header["X-Forwarded-Proto"]; ok {
+		req.Header.Del("X-Forwarded-Proto")
+	}
+	req.Header.Set("X-Real-Ip", p.Config.RealIP)
 	return true
 }
 
@@ -257,9 +269,6 @@ func (p *CORSProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		outreq.Header = make(http.Header) // Issue 33142: historical behavior was to always allocate
 	}
 
-	if !p.director(rw, outreq) {
-		return
-	}
 	outreq.Close = false
 
 	reqUpType := upgradeType(outreq.Header)
@@ -292,20 +301,23 @@ func (p *CORSProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		outreq.Header.Set("Upgrade", reqUpType)
 	}
 
-	if clientIP, _, err := net.SplitHostPort(req.RemoteAddr); err == nil {
-		// If we aren't the first proxy retain prior
-		// X-Forwarded-For information as a comma+space
-		// separated list and fold multiple headers into one.
-		prior, ok := outreq.Header["X-Forwarded-For"]
-		omit := ok && prior == nil // Issue 38079: nil now means don't populate the header
-		if len(prior) > 0 {
-			clientIP = strings.Join(prior, ", ") + ", " + clientIP
-		}
-		if !omit {
-			outreq.Header.Set("X-Forwarded-For", clientIP)
-		}
-	}
+	// if clientIP, _, err := net.SplitHostPort(req.RemoteAddr); err == nil {
+	// 	// If we aren't the first proxy retain prior
+	// 	// X-Forwarded-For information as a comma+space
+	// 	// separated list and fold multiple headers into one.
+	// 	prior, ok := outreq.Header["X-Forwarded-For"]
+	// 	omit := ok && prior == nil // Issue 38079: nil now means don't populate the header
+	// 	if len(prior) > 0 {
+	// 		clientIP = strings.Join(prior, ", ") + ", " + clientIP
+	// 	}
+	// 	if !omit {
+	// 		outreq.Header.Set("X-Forwarded-For", clientIP)
+	// 	}
+	// }
 
+	if !p.director(rw, outreq) {
+		return
+	}
 	p.logf("%+v", outreq)
 
 	res, err := transport.RoundTrip(outreq)
