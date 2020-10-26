@@ -110,27 +110,6 @@ func singleJoiningSlash(a, b string) string {
 	return a + b
 }
 
-func joinURLPath(a, b *url.URL) (path, rawpath string) {
-	if a.RawPath == "" && b.RawPath == "" {
-		return singleJoiningSlash(a.Path, b.Path), ""
-	}
-	// Same as singleJoiningSlash, but uses EscapedPath to determine
-	// whether a slash should be added
-	apath := a.EscapedPath()
-	bpath := b.EscapedPath()
-
-	aslash := strings.HasSuffix(apath, "/")
-	bslash := strings.HasPrefix(bpath, "/")
-
-	switch {
-	case aslash && bslash:
-		return a.Path + b.Path[1:], apath + bpath[1:]
-	case !aslash && !bslash:
-		return a.Path + "/" + b.Path, apath + "/" + bpath
-	}
-	return a.Path + b.Path, apath + bpath
-}
-
 // NewProxy returns a new CORSProxy that routes
 // URLs to the scheme, host, and base path provided in target. If the
 // target's path is "/base" and the incoming request was for "/dir",
@@ -206,16 +185,7 @@ func (p *CORSProxy) director(rw http.ResponseWriter, req *http.Request) bool {
 	}
 	req.Header.Del(p.Config.RealURLHeader)
 	// switch to real
-	req.Host = target.Host
-	targetQuery := target.RawQuery
-	req.URL.Scheme = target.Scheme
-	req.URL.Host = target.Host
-	req.URL.Path, req.URL.RawPath = joinURLPath(target, req.URL)
-	if targetQuery == "" || req.URL.RawQuery == "" {
-		req.URL.RawQuery = targetQuery + req.URL.RawQuery
-	} else {
-		req.URL.RawQuery = targetQuery + "&" + req.URL.RawQuery
-	}
+	req.URL = target
 	if _, ok := req.Header["User-Agent"]; ok {
 		req.Header.Del("User-Agent")
 	}
