@@ -185,6 +185,7 @@ func (p *CORSProxy) director(rw http.ResponseWriter, req *http.Request) bool {
 	}
 	req.Header.Del(p.Config.RealURLHeader)
 	req.Header.Set("Host", target.Host)
+	req.Host = target.Host
 	// switch to real
 	req.URL = target
 	if _, ok := req.Header["User-Agent"]; ok {
